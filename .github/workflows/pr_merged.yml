@@ -14,11 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod # Must match the OIDC subject's environment
     env:
+      #SNOWFLAKE_CLI_FEATURES_ENABLE_DBT_PROJECT_PROFILES_FILE_PRECEDENCE: "true"
       SNOWFLAKE_CLI_FEATURES_ENABLE_DBT: true
       SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
       # SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PAT }} # Snowflake password is required if you aren't using OIDC
       SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
-      SNOWFLAKE_SCHEMA: ${{ vars.SNOWFLAKE_SCHEMA }}
+      SNOWFLAKE_SCHEMA: ${{ vars.SNOWFLAKE_PROD_SCHEMA }}
 
     steps:
       # Check out repository code
