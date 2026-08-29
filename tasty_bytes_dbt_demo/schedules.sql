@@ -6,7 +6,7 @@ ALTER TASK IF EXISTS run_tasty_bytes_full SUSPEND;
 -- Builds a subset of the models run tests. This is an example of a subset that needs to be available early for business needs
 CREATE OR ALTER TASK run_tasty_bytes_subset
   WAREHOUSE = tasty_bytes_dbt_wh
-  SCHEDULE = '12 hours'
+  SCHEDULE = '1 minutes'
   AS
       execute dbt project tasty_bytes_dbt_object_gh_action args='build --select raw_customers stg_customers customers --target prod';
 
